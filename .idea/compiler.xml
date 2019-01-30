@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dubbo-consumer" />
+        <module name="dubbo-interface" />
+        <module name="dubbo-provider" />
+        <module name="dubboconsumer" />
+        <module name="dubbointerface" />
+        <module name="dubboprovider" />
+        <module name="sping-interceptor" />
+        <module name="spring-aop" />
+        <module name="spring-interceptor" />
+        <module name="spring-mybatis" />
+        <module name="spring-rabbitmq" />
+        <module name="springaop" />
+        <module name="web-filter" />
+        <module name="WebFilter" />
+        <module name="webfilter" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dubbo" target="1.8" />
+      <module name="dubbo-consumer" target="1.8" />
+      <module name="dubbo-interface" target="1.8" />
+      <module name="dubbo-provider" target="1.8" />
+      <module name="dubboconsumer" target="1.8" />
+      <module name="dubbointerface" target="1.8" />
+      <module name="dubboprovider" target="1.8" />
+      <module name="sping-interceptor" target="1.8" />
+      <module name="spring-aop" target="1.8" />
+      <module name="spring-interceptor" target="1.8" />
+      <module name="spring-mybatis" target="1.8" />
+      <module name="spring-rabbitmq" target="1.8" />
+      <module name="springaop" target="1.8" />
+      <module name="springboot" target="1.8" />
+      <module name="springrabbitmq" target="1.8" />
+      <module name="web-filter" target="1.8" />
+      <module name="WebFilter" target="1.8" />
+      <module name="webfilter" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

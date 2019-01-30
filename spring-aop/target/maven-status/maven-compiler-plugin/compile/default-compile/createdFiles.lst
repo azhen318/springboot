@@ -1,0 +1,3 @@
+com\az\springaop\aop\LogAop.class
+com\az\springaop\controller\HelloController.class
+Application.class

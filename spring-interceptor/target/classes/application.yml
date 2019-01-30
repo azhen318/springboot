@@ -1,0 +1,11 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /springinterceptor
+
+
+
+spring:
+  http:
+    encoding:
+      force: true

@@ -1,0 +1,9 @@
+server:
+  port: 8080
+spring:
+  rabbitmq:
+    host: 172.28.169.150
+    port: 5672
+    username: admin
+    password: admin
+    publisher-confirms: true

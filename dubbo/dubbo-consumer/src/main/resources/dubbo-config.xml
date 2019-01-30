@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!--配置服务名称-->
+    <dubbo:application name="dubboprovider" />
+    <!--配置服务注册中心，dubbo不仅仅支持zookeeper-->
+<!--    <dubbo:registry address="zookeeper://127.0.0.1:2181" />-->
+    <!--声明服务引用，与服务声明接口类型一致-->
+    <!--<dubbo:reference interface="com.az.dubbointerface.inter.ApiProviderStudent"
+                     id="apiProviderStudent" />-->
+    <!-- 如果不使用 zookeeper 等服务注册中心，则启动如下配置即可，注意不能省去 -->
+    <dubbo:registry address="N/A" />
+
+    <!--使用 dubbo 协议实现定义好的 api 工程的 ProductService 接口-->
+    <!-- <dubbo:reference id="productService" interface="org.dubbo03.api.ProductService"/> -->
+
+    <!--
+    当不使用  zookeeper 等服务注册中心时使用如下配置，其实关键是需指定url以及指定dubbo协议,url格式如下:
+    url="dubbo://ip:port/provider工程的dubbo配置文件中相关dubbo:service标签的interface属性值"
+    -->
+    <dubbo:reference id="apiProviderStudent" interface="com.az.dubbointerface.inter.ApiProviderStudent"
+                     url="dubbo://localhost:20880/com.az.dubbointerface.inter.ApiProviderStudent"/>
+
+</beans>
