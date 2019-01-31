@@ -23,6 +23,7 @@
        <module>spring-rabbitmq</module>
        <module>dubbo</module>
        <module>spring-mybatis</module>
+       <module>spring-mybatis-multi</module>
    </modules>
 
     <properties>
