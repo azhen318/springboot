@@ -1,0 +1,22 @@
+
+
+spring:
+  datasource:
+    master:
+      druid:
+        mysql:
+            type: com.alibaba.druid.pool.DruidDataSource
+            driver-class-name: com.mysql.jdbc.Driver
+            url: jdbc:mysql://172.28.30.136:3306/gpsop_prod_3.0?useUnicode=true&characterEncoding=UTF-8&rewriteBatchedStatements=true&autoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull
+            username: gpsop
+            password: gpsop
+    salve-a:
+      druid:
+        mysql:
+            type: com.alibaba.druid.pool.DruidDataSource
+            driver-class-name: com.mysql.jdbc.Driver
+            url: jdbc:mysql://172.28.30.136:3306/gpsop_prod_2.0?useUnicode=true&characterEncoding=UTF-8&rewriteBatchedStatements=true&autoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull
+            username: gpsop
+            password: gpsop
+server:
+  port: 8090

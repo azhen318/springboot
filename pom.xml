@@ -24,6 +24,7 @@
        <module>dubbo</module>
        <module>spring-mybatis</module>
        <module>spring-mybatis-multi</module>
+       <module>spring-mybatis-dynamicdatasource</module>
    </modules>
 
     <properties>

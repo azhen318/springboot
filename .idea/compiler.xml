@@ -16,6 +16,7 @@
         <module name="spring-aop" />
         <module name="spring-interceptor" />
         <module name="spring-mybatis" />
+        <module name="spring-mybatis-dynamicdatasource" />
         <module name="spring-mybatis-multi" />
         <module name="spring-rabbitmq" />
         <module name="springaop" />
@@ -36,6 +37,7 @@
       <module name="spring-aop" target="1.8" />
       <module name="spring-interceptor" target="1.8" />
       <module name="spring-mybatis" target="1.8" />
+      <module name="spring-mybatis-dynamicdatasource" target="1.8" />
       <module name="spring-mybatis-multi" target="1.8" />
       <module name="spring-rabbitmq" target="1.8" />
       <module name="springaop" target="1.8" />

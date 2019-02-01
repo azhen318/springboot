@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.az.dynamicdatasource.mapper.StudentMapper">
+
+    <sql id="student_col">
+        id,name,age,sex
+    </sql>
+
+
+    <insert id="insertStudent" parameterType="Student">
+        INSERT INTO  student (name,age,classID,sex) VALUE
+            (#{name},#{age},#{classID},#{sex.code});
+    </insert>
+
+    <select id="queryStudents" parameterType="map" resultMap="studentID">
+        select * from  student
+        <where>
+            <trim prefixOverrides="and">
+                <if test="name !=null and name !=''">
+                    and name=#{name}</if>
+                <if test="id !=null and id !=''">
+                    and id=#{id}</if>
+            </trim>
+        </where>
+    </select>
+
+
+    <resultMap id="studentID" type="Student">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="age"  column="age"  jdbcType="INTEGER"/>
+        <result property="classID" column="classID" jdbcType="INTEGER"/>
+        <result property="create_time" column="create_Time" jdbcType="TIME"
+                javaType="java.util.Date"/>
+        <!--插入枚举类型数据-->
+        <result property="sex"  column="sex"  javaType="com.az.dynamicdatasource.eum.Sex"
+                typeHandler="com.az.dynamicdatasource.handler.SexTypeHandler"/>
+    </resultMap>
+
+    <parameterMap id="student" type="Student">
+        <parameter property="name" resultMap="name" jdbcType="VARCHAR"/>
+        <parameter property="age"  resultMap="age"  jdbcType="INTEGER"/>
+        <parameter property="classID" resultMap="classID" jdbcType="INTEGER"/>
+        <parameter property="create_time" resultMap="create_Time" jdbcType="TIME"
+                javaType="java.util.Date"/>
+        <!--插入枚举类型数据-->
+        <parameter property="sex"  resultMap="sex" javaType="com.az.dynamicdatasource.eum.Sex"
+                   typeHandler="com.az.dynamicdatasource.handler.SexTypeHandler"/>
+    </parameterMap>
+
+</mapper>
