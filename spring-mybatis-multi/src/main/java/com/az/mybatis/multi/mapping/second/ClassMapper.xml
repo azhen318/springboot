@@ -33,7 +33,7 @@
         <parameter property="master" resultMap="master" jdbcType="VARCHAR"/>
         <parameter property="count" resultMap="count" jdbcType="INTEGER"/>
         <parameter property="create_time" resultMap="create_time"
-                   jdbcType="TIME" javaType="java.util.Date"/>
+                    javaType="java.util.Date"/>
     </parameterMap>
 
     <resultMap id="clazz" type="Class">
@@ -43,7 +43,7 @@
         <result property="master" column="master" javaType="String"/>
         <result property="count" column="count" javaType="Integer"/>
         <result property="create_time" column="create_time"
-                  jdbcType="TIME" javaType="java.util.Date"/>
+                   javaType="java.util.Date"/>
 
     </resultMap>
 </mapper>

@@ -22,6 +22,10 @@ public class Student implements Serializable{
 
     private Integer classID;
 
+    public Student(){
+
+    }
+
 
     public Student(Integer id,String name, Integer age, Sex sex){
         this.id=id;

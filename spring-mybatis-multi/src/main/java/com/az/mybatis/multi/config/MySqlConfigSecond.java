@@ -1,6 +1,7 @@
 package com.az.mybatis.multi.config;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
+import com.az.mybatis.multi.inteceptor.MybatisInteceptor;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -23,6 +24,8 @@ public class MySqlConfigSecond {
     static final String PACKAGE="com.az.mybatis.multi.mapper.second";
     static final String MAPPING_LOCATION="classpath:com/az/mybatis/multi/mapping/second/*.xml";
     static final String TYPE_PACKAGE="com.az.mybatis.multi.entry";
+
+
     @ConfigurationProperties(prefix = "spring.datasource.second.druid.mysql")
     @Bean
     public DataSource secondDataSource(){
@@ -39,7 +42,7 @@ public class MySqlConfigSecond {
                 new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         sqlSessionFactoryBean.setTypeAliasesPackage(TYPE_PACKAGE);
-        sqlSessionFactoryBean.setPlugins(new Interceptor[]{});
+        sqlSessionFactoryBean.setPlugins(new Interceptor[]{new MybatisInteceptor()});
         sqlSessionFactoryBean.setMapperLocations(
                 new PathMatchingResourcePatternResolver()
                         .getResources(MAPPING_LOCATION));

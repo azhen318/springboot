@@ -6,7 +6,7 @@
 
 
     <insert id="insertStudent" parameterType="Student">
-        INSERT INTO  student (name,age,sex) VALUE
+        INSERT INTO  student (name,age,classID,sex) VALUE
             (#{name},#{age},#{classID},#{sex.code});
     </insert>
 
