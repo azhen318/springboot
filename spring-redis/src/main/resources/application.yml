@@ -1,0 +1,7 @@
+spring:
+  redis:
+#    url: 172.28.30.137
+    port: 6379
+    password: redis666666
+    host: 172.28.30.137
+

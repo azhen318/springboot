@@ -19,6 +19,7 @@
         <module name="spring-mybatis-dynamicdatasource" />
         <module name="spring-mybatis-multi" />
         <module name="spring-rabbitmq" />
+        <module name="spring-redis" />
         <module name="springaop" />
         <module name="web-filter" />
         <module name="WebFilter" />
@@ -40,6 +41,7 @@
       <module name="spring-mybatis-dynamicdatasource" target="1.8" />
       <module name="spring-mybatis-multi" target="1.8" />
       <module name="spring-rabbitmq" target="1.8" />
+      <module name="spring-redis" target="1.8" />
       <module name="springaop" target="1.8" />
       <module name="springboot" target="1.8" />
       <module name="springrabbitmq" target="1.8" />

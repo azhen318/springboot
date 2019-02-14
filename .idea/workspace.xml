@@ -686,7 +686,7 @@
       <workItem from="1548749391146" duration="27616000" />
       <workItem from="1548899000080" duration="7781000" />
       <workItem from="1548909787918" duration="9934000" />
-      <workItem from="1548983106079" duration="15324000" />
+      <workItem from="1548983106079" duration="15273000" />
     </task>
     <task id="LOCAL-00001" summary="dataSource-multi">
       <created>1548916525567</created>
@@ -738,7 +738,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134078000" />
+    <option name="totallyTimeSpent" value="134027000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -836,8 +836,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dataSource-multi" />
-    <MESSAGE value="动态数据源" />
-    <option name="LAST_COMMIT_MESSAGE" value="动态数据源" />
+    <option name="LAST_COMMIT_MESSAGE" value="dataSource-multi" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
