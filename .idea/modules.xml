@@ -6,11 +6,15 @@
       <module fileurl="file://$PROJECT_DIR$/dubbo/dubbo-consumer/dubbo-consumer.iml" filepath="$PROJECT_DIR$/dubbo/dubbo-consumer/dubbo-consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo/dubbo-interface/dubbo-interface.iml" filepath="$PROJECT_DIR$/dubbo/dubbo-interface/dubbo-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo/dubbo-provider/dubbo-provider.iml" filepath="$PROJECT_DIR$/dubbo/dubbo-provider/dubbo-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-netty/netty-client/netty-client.iml" filepath="$PROJECT_DIR$/spring-netty/netty-client/netty-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-netty/netty-server/netty-server.iml" filepath="$PROJECT_DIR$/spring-netty/netty-server/netty-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-aop/spring-aop.iml" filepath="$PROJECT_DIR$/spring-aop/spring-aop.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-interceptor/spring-interceptor.iml" filepath="$PROJECT_DIR$/spring-interceptor/spring-interceptor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-mongo/spring-mongo.iml" filepath="$PROJECT_DIR$/spring-mongo/spring-mongo.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-mybatis/spring-mybatis.iml" filepath="$PROJECT_DIR$/spring-mybatis/spring-mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-mybatis-dynamicdatasource/spring-mybatis-dynamicdatasource.iml" filepath="$PROJECT_DIR$/spring-mybatis-dynamicdatasource/spring-mybatis-dynamicdatasource.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-mybatis-multi/spring-mybatis-multi.iml" filepath="$PROJECT_DIR$/spring-mybatis-multi/spring-mybatis-multi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-netty/spring-netty.iml" filepath="$PROJECT_DIR$/spring-netty/spring-netty.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-rabbitmq/spring-rabbitmq.iml" filepath="$PROJECT_DIR$/spring-rabbitmq/spring-rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-redis/spring-redis.iml" filepath="$PROJECT_DIR$/spring-redis/spring-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot.iml" filepath="$PROJECT_DIR$/springboot.iml" />

@@ -26,11 +26,13 @@
        <module>spring-mybatis-multi</module>
        <module>spring-mybatis-dynamicdatasource</module>
        <module>spring-redis</module>
+       <module>spring-netty</module>
+       <module>spring-mongo</module>
    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jdk.version>1.7</jdk.version>
+        <jdk.version>1.8</jdk.version>
     </properties>
 
     <dependencies>

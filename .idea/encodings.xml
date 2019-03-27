@@ -8,9 +8,13 @@
     <file url="file://$PROJECT_DIR$/dubbo/dubbo-provider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-aop" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-interceptor" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-mongo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-mybatis" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-mybatis-dynamicdatasource" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-mybatis-multi" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-netty" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-netty/netty-client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-netty/netty-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-rabbitmq" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-redis" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/web-filter" charset="UTF-8" />

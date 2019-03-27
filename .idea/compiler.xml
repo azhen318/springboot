@@ -12,9 +12,12 @@
         <module name="dubboconsumer" />
         <module name="dubbointerface" />
         <module name="dubboprovider" />
+        <module name="netty-client" />
+        <module name="netty-server" />
         <module name="sping-interceptor" />
         <module name="spring-aop" />
         <module name="spring-interceptor" />
+        <module name="spring-mongo" />
         <module name="spring-mybatis" />
         <module name="spring-mybatis-dynamicdatasource" />
         <module name="spring-mybatis-multi" />
@@ -22,32 +25,28 @@
         <module name="spring-redis" />
         <module name="springaop" />
         <module name="web-filter" />
-        <module name="WebFilter" />
         <module name="webfilter" />
+        <module name="WebFilter" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="dubbo" target="1.8" />
       <module name="dubbo-consumer" target="1.8" />
       <module name="dubbo-interface" target="1.8" />
       <module name="dubbo-provider" target="1.8" />
-      <module name="dubboconsumer" target="1.8" />
-      <module name="dubbointerface" target="1.8" />
-      <module name="dubboprovider" target="1.8" />
-      <module name="sping-interceptor" target="1.8" />
+      <module name="netty-client" target="1.8" />
+      <module name="netty-server" target="1.8" />
       <module name="spring-aop" target="1.8" />
       <module name="spring-interceptor" target="1.8" />
+      <module name="spring-mongo" target="1.8" />
       <module name="spring-mybatis" target="1.8" />
       <module name="spring-mybatis-dynamicdatasource" target="1.8" />
       <module name="spring-mybatis-multi" target="1.8" />
+      <module name="spring-netty" target="1.8" />
       <module name="spring-rabbitmq" target="1.8" />
       <module name="spring-redis" target="1.8" />
-      <module name="springaop" target="1.8" />
       <module name="springboot" target="1.8" />
-      <module name="springrabbitmq" target="1.8" />
       <module name="web-filter" target="1.8" />
-      <module name="WebFilter" target="1.8" />
-      <module name="webfilter" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
