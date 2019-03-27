@@ -1,7 +1,31 @@
 spring:
   redis:
+#----------------
+#单机配置
 #    url: 172.28.30.137
-    port: 6379
-    password: redis666666
-    host: 172.28.30.137
+#    port: 6379
+#    password: redis666666
+#------------------
+
+
+#----------------
+#哨兵配置
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 10000
+    database: 0
+    sentinel:
+      master: mymaster
+      nodes: 172.28.169.52:26380,172.28.169.52:26381,172.28.169.52:26382
+    password: admin
+#----------------
+redisson:
+  address: redis://172.28.30.137:6379
+  password: redis666666
+
+
 

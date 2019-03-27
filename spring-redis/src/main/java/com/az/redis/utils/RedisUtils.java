@@ -69,6 +69,17 @@ public class RedisUtils {
         operations.set(obj,val);
     }
 
+    /**
+     * @see redis操作value元素，不存在则插入。适合做分布式锁
+     * @param obj
+     * @param val
+     * @return
+     */
+    public static Boolean addValIfAbsent(String obj,String val){
+        ValueOperations  operations=template.opsForValue();
+        return operations.setIfAbsent(obj,val);
+    }
+
     public static String getVal(String obj){
         ValueOperations<String,String> operations=template.opsForValue();
         return operations.get(obj);

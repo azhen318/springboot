@@ -2,22 +2,39 @@ import com.alibaba.fastjson.JSONObject;
 import com.az.redis.Application;
 import com.az.redis.entry.Student;
 import com.az.redis.utils.BeanUtils;
+import com.az.redis.utils.DateUtils;
 import com.az.redis.utils.RedisUtils;
+import com.az.redis.utils.RedissonUtils;
+import com.google.common.util.concurrent.RateLimiter;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.redisson.api.RList;
+import org.redisson.api.RMap;
+import org.redisson.api.RSet;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.MessageFormat;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class RedisTest {
 
     private static Log logger= LogFactory.getLog(RedisTest.class);
+
+    private static Integer count= 0;
+
+    @Autowired
+    private RedissonClient redissonClient;
 
 
 
@@ -153,6 +170,9 @@ public class RedisTest {
 
 
     @Test
+    /**
+     * @see 测试Redis获取Zset元素
+     */
     public void testRedisZsetGet(){
         Set<String> val=RedisUtils.getZsetByIndex("az:springboot:redis:test:zset",0L,-1L);
         StringBuilder sb=new StringBuilder();
@@ -176,6 +196,145 @@ public class RedisTest {
 
         Long lll=RedisUtils.delZsetByScore("az:springboot:redis:test:zset", 1,4);
         logger.info("Redis Zset根据值删除数据："+lll.toString());
+    }
+
+
+    @Test
+    /**
+     * @see 测试用Redis实现分布式锁。
+     *  redis是单机部署时可以用该方法实现分布式锁；
+     *  如果是多机部署的话可以尝试用Redisson实现分布式锁
+     *
+     *  现实分布式锁的三种方式：
+     *      1）数据库乐观锁
+     *      2）redis分布式锁
+     *      3）zookkeep分布式锁
+     *  @apiNote 关于redis加锁都是先setNX()获取锁，然后再setExpire()设置锁的有效时间。
+     *　　　然而这样的话获取锁的操作就不是原子性的了，如果setNX后系统宕机，就会造成锁死，系统阻塞。
+     */
+    public void testRedisLock(){
+
+        ExecutorService service= Executors.newFixedThreadPool(20);
+        for(int i=0;i<20;i++){
+        service.execute(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    Boolean lock=RedisUtils.addValIfAbsent("az:springboot:redis:test:lock",Thread.currentThread().getName());
+                    if(lock){
+                        RedisUtils.setExpiredTime("az:springboot:redis:test:lock",300L, TimeUnit.MILLISECONDS);
+                        count++;
+                        logger.info("获取分布式锁成功："+Thread.currentThread().getName()+";count值："+count);
+                        try {
+                            Thread.sleep(300L);
+                        } catch (InterruptedException e) {
+                        }
+                    }else{
+                        logger.info("获取分布式锁失败："+Thread.currentThread().getName());
+                    }
+
+                }
+            }
+        });}
+
+
+        try {
+            Thread.sleep(120000);
+        } catch (InterruptedException e) {
+        }
+
+    }
+
+
+    @Test
+    /**
+     * @see Redis分布式架构redisson
+     * 参考地址：https://github.com/mrniko/redisson/wiki
+     */
+    public void testRedisson(){
+        RList<String> list=redissonClient.getList("az:springboot:redisson:test:list");
+        Boolean bList=list.add("A");
+
+        RMap<String,String> map=
+                redissonClient.getMap("az:springboot:redisson:test:map");
+        String pre=map.put("A","A1");
+
+        pre=map.put("A","A2");
+
+        RSet<String> set=
+                redissonClient.getSet("az:springboot:redisson:test:set");
+        set.add("A");
+        set.add("A1");
+        set.add("A3");
+        Boolean bSet=set.add("A");
+    }
+
+
+    @Test
+    /**
+     * @see redisson实现分布式锁
+     */
+    public void testRedissonLock(){
+
+        ExecutorService executorService=Executors.newFixedThreadPool(20);
+        final String key="redissonlock";
+
+        for(int i=0;i<20;i++){
+            while(true){
+                executorService.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        Boolean res=RedissonUtils.tryLock(key,TimeUnit.MILLISECONDS,100,200);
+                        if(res){
+                            logger.info(MessageFormat.format("{0}成功，count值【{1}】",Thread.currentThread().getName(),count));
+                            count++;
+                        }else{
+                            logger.error(Thread.currentThread().getName()+"失败");
+                        }
+
+                    }
+                });
+            }
+        }
+
+        try {
+            Thread.sleep(120000);
+        } catch (InterruptedException e) {
+        }
+    }
+
+    private RateLimiter rateLimiter=RateLimiter.create(3.0);
+
+    @Test
+    /**
+     * @see guava 令牌限流测试;
+     *  同功能的api还有semaphore
+     *  @apiNote
+     *    acquire():从RateLimiter获取一个许可，该方法会被阻塞直到获取到请求
+     *    tryAcquire():从RateLimiter 获取许可，如果该许可可以在无延迟下的情况下立即
+     *                  获取得到的话
+     *    tryAcquire(long timeout,TimeUnit unit):从RateLimiter获取许可如果该许可
+     *                  可以在不超过timeout的时间内获取得到的话，或者如果无法在timeout
+     *                  过期之前获取得到许可的话，那么立即返回false（无需等待）。该方法等同于
+     *                  tryAcquire(1, timeout, unit)。
+     */
+    public void testGuava(){
+
+        while (true){
+            Boolean sleep=rateLimiter.tryAcquire(3);
+            if(sleep){
+                logger.info("获取时间"+DateUtils.time2YYYYMMDDHHmmss(new Date()));
+            }else{
+                logger.error("失败:"+sleep);
+            }
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+            }
+        }
+
+
+
     }
 
 }
